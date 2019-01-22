@@ -1,216 +1,36 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head><meta name="generator" content="Hexo 3.8.0">
-  <meta charset="utf-8">
-  
-
-  
-  <title>angularJS的$compile | Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="AngularJS的$compile函数使用情景： ​    在使用angualrJS的时候，有事回遇到在原生js中使用angularJS的contoller下的$scope的参数或者函数。有时还会用原生JS往页面中动态添加需要使用的dom，往往这写dom都不会被angualrJS编译在scope作用域中，使得这些动态的dom上关于ng-click,ng-class等angularJS相关标签无效">
+<meta charset="utf-8">
+<title>angularJS的$compile - Hexo</title>
+<base href="/">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<link rel="canonical" href="http://yoursite.com/post/firtBlog/">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="translucent">
+<meta name="description" content="AngularJS的$compile函数使用情景： ​    在使用angualrJS的时候，有事回遇到在原生js中使用angularJS的contoller下的$scope的参数或者函数。有时还会用原生JS往页面中动态添加需要使用的dom，往往这写dom都不会被angualrJS编译在scope作用域中，使得这些动态的dom上关于ng-click,ng-class等angularJS相关标签无效">
 <meta name="keywords" content="angularJS">
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:title" content="angularJS的$compile">
 <meta property="og:url" content="http://yoursite.com/post/firtBlog/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="AngularJS的$compile函数使用情景： ​    在使用angualrJS的时候，有事回遇到在原生js中使用angularJS的contoller下的$scope的参数或者函数。有时还会用原生JS往页面中动态添加需要使用的dom，往往这写dom都不会被angualrJS编译在scope作用域中，使得这些动态的dom上关于ng-click,ng-class等angularJS相关标签无效">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/avatar.jpg">
 <meta property="og:updated_time" content="2019-01-22T09:41:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="angularJS的$compile">
 <meta name="twitter:description" content="AngularJS的$compile函数使用情景： ​    在使用angualrJS的时候，有事回遇到在原生js中使用angularJS的contoller下的$scope的参数或者函数。有时还会用原生JS往页面中动态添加需要使用的dom，往往这写dom都不会被angualrJS编译在scope作用域中，使得这些动态的dom上关于ng-click,ng-class等angularJS相关标签无效">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
+<meta name="twitter:image" content="http://yoursite.com/avatar.jpg">
+
+<link rel="stylesheet" href="/fonts.e15b7f98c5fa14803416.css">
+<link rel="stylesheet" href="/styles.192103d5443607e2ac6a.css">
+<script src="/config.7899d0a388e9087f9597.js"></script>
 </head>
-</html>
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-firtBlog" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/post/firtBlog/" class="article-date">
-  <time datetime="2019-01-22T09:39:21.000Z" itemprop="datePublished">2019-01-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      angularJS的$compile
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="AngularJS的-compile函数使用"><a href="#AngularJS的-compile函数使用" class="headerlink" title="AngularJS的$compile函数使用"></a>AngularJS的$compile函数使用</h1><p>情景：</p>
-<p>​    在使用angualrJS的时候，有事回遇到在原生js中使用angularJS的contoller下的$scope的参数或者函数。有时还会用原生JS往页面中动态添加需要使用的dom，往往这写dom都不会被angualrJS编译在scope作用域中，使得这些动态的dom上关于ng-click,ng-class等angularJS相关标签无效。</p>
-<p>思路和方法：</p>
-<p>​    首先引入了angularJS后通过原生js可以使用其作用域中的变量和方法属性选择器中ngCtrl是controller名。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> appElement = <span class="built_in">document</span>.querySelector(<span class="string">'[ng-controller=ngCtrl]'</span>);</span><br><span class="line"><span class="comment">//获取$scope变量</span></span><br><span class="line"><span class="keyword">var</span> $scope = angular.element(appElement).scope();</span><br></pre></td></tr></table></figure>
-<p>​    在用到$compile之前，我们在使用angularJS的时候有时会通过JS往文档中加入dom，比如在body中加入一个带有ng-click点击事件的dom</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bodyContainer = <span class="built_in">document</span>.getElementsByTagsName(<span class="string">'body'</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">let</span> html = <span class="string">`&lt;div ng-click="showName()"&gt;23333&lt;/div&gt;`</span>;</span><br><span class="line">bodyContainer.appendChild(html);</span><br></pre></td></tr></table></figure>
-<p>​    经过允许我们会发现 ，这样的实现的代码，ng-click()事件是没有绑定。因为这样生成的dom并没有经过angularJS的编译，所以我们要使用$compile来手动得将我们动态生成的dom与angualrJS的$scope绑定。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> bodyContainer = <span class="built_in">document</span>.getElementsByTagsName(<span class="string">'body'</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">let</span> html = <span class="string">`&lt;div ng-click="showName()"&gt;23333&lt;/div&gt;`</span>;                     </span><br><span class="line"><span class="keyword">let</span> compileDom= $compile(html)($scope);</span><br><span class="line">bodyContainer.appendChild(compileDom);</span><br><span class="line">$scope.$digest();</span><br></pre></td></tr></table></figure>
-<p>​    我们也可以将complileDom打印出来可发现compile的内容是经过angularJS编译的dom。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/post/firtBlog/" data-id="cjr7rdc370001k8la1dslpj58" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/angularJS/">angularJS</a></li></ul>
-
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/post/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/angularJS/">angularJS</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/angularJS/" style="font-size: 10px;">angularJS</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">January 2019</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/post/firtBlog/">angularJS的$compile</a>
-          </li>
-        
-          <li>
-            <a href="/post/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2019 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
-</body>
+<is-d2a57d></is-d2a57d>
+<script src="/runtime.ec2944dd8b20ec099bf3.js"></script>
+<script src="/polyfills.801d20023695166b327d.js"></script>
+<script src="/main.9621575066957e0a083c.en.js"></script></body>
 </html>
